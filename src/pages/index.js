@@ -1,31 +1,52 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql } from "gatsby"
+import React from "react"
+import BackgroundSection from "../components/BackgroundSection"
+import Contact from "../components/Contact"
+import Info from "../components/Info"
+import Layout from "../components/Layout"
+import Menu from "../components/Menu"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+const index = ({ data }) => {
+  return (
+    <Layout>
+      <BackgroundSection
+        title="Regular Joe"
+        img={data?.img.childImageSharp.fluid}
+        styleClass="background-img"
+      />
+      <Info title="Our Story" />
+      <Menu items={data?.menu?.edges} />
+      <Contact />
+    </Layout>
+  )
+}
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["auto", "webp", "avif"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
-      <Link to="/using-ssr">Go to "Using SSR"</Link> <br />
-      <Link to="/using-dsg">Go to "Using DSG"</Link>
-    </p>
-  </Layout>
-)
+export const query = graphql`
+  query MyQuery {
+    img: file(relativePath: { eq: "home.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    menu: allContentfulCoffeeItems {
+      edges {
+        node {
+          id
+          title
+          price
+          category
+          description {
+            description
+          }
+          image {
+            gatsbyImageData(placeholder: TRACED_SVG)
+          }
+        }
+      }
+    }
+  }
+`
 
-export default IndexPage
+export default index

@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.background-img {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(255, 158, 9, 0.5), rgba(255, 158, 9, 0.5));
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.about-img {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(255, 158, 9, 0.5), rgba(255, 158, 9, 0.5));
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.info-section {
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+  justify-content: center;
+  text-align: center;
+}
+.info-text {
+  color: #333;
+  line-height: 2rem;
+  word-spacing: 0.5rem;
+  margin: auto;
+  width: 70%;
+  padding: 1rem;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+.info-btn {
+  background-color: rgb(255, 158, 9);
+  color: #333;
+  border: 0;
+  outline: none;
+  font-size: 1.1rem;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+.info-btn:hover {
+  background-color: rgba(255, 158, 9, 0.5);
+}
+
+@media (max-width: 770px) {
+  .about-img {
+    min-height: 60vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(255, 158, 9, 0.5), rgba(255, 158, 9, 0.5));
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .background-img {
+    min-height: 50vh;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(255, 158, 9, 0.5), rgba(255, 158, 9, 0.5));
+    background-position: center;
+    background-size: contain;
+    background-attachment: fixed;
+  }
+  .info-text {
+    color: #333;
+    line-height: 2rem;
+    word-spacing: 0.5rem;
+    margin: auto;
+    width: 90%;
+    padding: 1rem;
+  }
+}
