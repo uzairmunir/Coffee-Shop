@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -39,16 +43,15 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `a4hzo8wt5eg7`,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
         // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: "Mavqhxk_ZB8o_y7HoyocK1nmOhDOftqa7X2KH-03GKc",
+        accessToken: process.env.CONTENTFUL_API_KEY,
       },
     },
     {
       resolve: "gatsby-plugin-snipcart",
       options: {
-        apiKey:
-          "NjA5N2ViNDMtNDgzYS00MzY0LTk3N2YtYzQ3NGRjOTJjMTMxNjM3Nzc1OTc1NzA4NjEwMDkw        ",
+        apiKey: process.env.SNIP_CART_API_KEY,
         autopop: true,
       },
     },
